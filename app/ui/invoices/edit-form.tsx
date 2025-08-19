@@ -19,7 +19,7 @@ export default function EditInvoiceForm({
   invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
-  const initialState: State = { message: null, errors: {}, formData: { customerId: invoice.customer_id, amount: invoice.amount, status: invoice.status } };
+  const initialState: State = { message: '', errors: {}, formData: { customerId: String(invoice.customer_id), amount: String(invoice.amount), status: String(invoice.status) as string } };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
   const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
   return (
@@ -35,7 +35,7 @@ export default function EditInvoiceForm({
               id="customer"
               name="customerId"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              defaultValue={state.formData?.customerId}
+              defaultValue={state.formData?.customerId as string}
               aria-describedby="customer-error"
             >
               <option value="" disabled>
@@ -71,7 +71,7 @@ export default function EditInvoiceForm({
                 name="amount"
                 type="number"
                 step="0.01"
-                defaultValue={state.formData?.amount}
+                defaultValue={state.formData?.amount as string}
                 aria-describedby="amount-error"
                 placeholder="Enter USD amount"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"

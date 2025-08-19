@@ -30,8 +30,8 @@ export type State = {
     amount?: string[];
     status?: string[];
   };
-  message?: string | null;
-  formData?: Record<string,any>
+  message: string;
+  formData?: { [k: string]: FormDataEntryValue };
 };
 
 
@@ -119,6 +119,6 @@ export async function authenticate(
   }
 }
 
-export async function logout(){
+export async function logout() {
   await signOut({ redirectTo: '/' });
 }
