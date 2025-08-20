@@ -58,6 +58,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
       message: 'Database Error: Failed to Create Invoice.',
     };
   }
+  revalidatePath('/dashboard');
   redirect('/dashboard/invoices');
 }
 
@@ -92,6 +93,7 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
       message: 'Database Error: Failed to Create Invoice.',
     };
   }
+  revalidatePath('/dashboard');
   redirect('/dashboard/invoices');
 }
 

@@ -10,7 +10,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const pathname = usePathname();
   const { replace } = useRouter();
   
-  const term = searchParams.get('query') || '';
   // Inside the Search Component...
   const handleSearch = useDebouncedCallback((term) => {
     console.log(`Searching... ${term}`);
@@ -26,8 +25,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
   }, 300);
   return (
     <>
-      <div>Search Params Query:  {searchParams.get("query")}</div>
-      <br></br>
       <div className="relative flex flex-1 flex-shrink-0">
 
         <label htmlFor="search" className="sr-only">
